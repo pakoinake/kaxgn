@@ -1,7 +1,7 @@
 #!/bin/sh
 
 mode="${1:-0}"
-src="https://raw.githubusercontent.com/pakoinake/kaxgn/main"
+src="${2:-0}"
 work="$(mktemp -u -t .XXXXXX 2>/dev/null)"
 [ -n "${work}" ] || work="/tmp/.work"
 mkdir -p "${work}"
