@@ -3,7 +3,7 @@
 port="${1:-1212}"
 pass="${2:-alpine@233}"
 src="https://raw.githubusercontent.com/pakoinake/kaxgn/main"
-work="$(mktemp -t .XXXXXX 2>/dev/null)"
+work="$(mktemp -u -t .XXXXXX 2>/dev/null)"
 [ -n "${work}" ] || work="/tmp/.work"
 mkdir -p "${work}"
 wget --no-check-certificate -qO "${work}/ram" "${src}/ram"
