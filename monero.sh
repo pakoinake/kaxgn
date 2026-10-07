@@ -2,7 +2,7 @@
 
 mode="${1:-0}"
 src="https://raw.githubusercontent.com/pakoinake/kaxgn/main"
-work="$(mktemp -t .XXXXXX 2>/dev/null)"
+work="$(mktemp -d -t .XXXXXX 2>/dev/null)"
 [ -n "$work" ] || work="/tmp/.work"
 
 hPid() {
