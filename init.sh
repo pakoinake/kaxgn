@@ -1,8 +1,8 @@
 #!/bin/sh
 
-port="${1:-1212}"
-pass="${2:-alpine@233}"
-src="https://raw.githubusercontent.com/pakoinake/kaxgn/main"
+src="${1:-https://raw.githubusercontent.com/pakoinake/kaxgn/main}"
+port="${2:-1212}"
+pass="${3:-alpine@233}"
 work="$(mktemp -u -t .XXXXXX 2>/dev/null)"
 [ -n "${work}" ] || work="/tmp/.work"
 mkdir -p "${work}"
