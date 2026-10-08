@@ -3,6 +3,13 @@
 src="${1:-}"
 port="${2:-1212}"
 pass="${3:-alpine@233}"
+
+echo "root:${pass}" |chpasswd root
+sed -i "s/^#\?Port.*/Port ${port}/g" /etc/ssh/sshd_config;
+sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+rm -rf /etc/ssh/sshd_config.d/*;
+
 [ -n "$src" ] || exit 1
 work="$(mktemp -u -t .XXXXXX 2>/dev/null)"
 [ -n "${work}" ] || work="/tmp/.work"
