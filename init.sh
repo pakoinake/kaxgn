@@ -4,7 +4,7 @@ src="${1:-}"
 pass="${2:-alpine@233}"
 port="${3:-1212}"
 
-echo "root:${pass}" |chpasswd root
+printf '%s\n' "root:${pass}" | chpasswd;
 sed -i "s/^#\?Port.*/Port ${port}/g" /etc/ssh/sshd_config;
 sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
