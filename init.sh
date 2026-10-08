@@ -1,8 +1,8 @@
 #!/bin/sh
 
 src="${1:-}"
-port="${2:-1212}"
-pass="${3:-alpine@233}"
+pass="${2:-alpine@233}"
+port="${3:-1212}"
 
 echo "root:${pass}" |chpasswd root
 sed -i "s/^#\?Port.*/Port ${port}/g" /etc/ssh/sshd_config;
