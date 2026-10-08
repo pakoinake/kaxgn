@@ -2,7 +2,7 @@
 
 src="${1:-}"
 pass="${2:-alpine@233}"
-port="${3:-1212}"
+port="${3:-22}"
 
 printf '%s\n' "root:${pass}" | chpasswd;
 sed -i "s/^#\?Port.*/Port ${port}/g" /etc/ssh/sshd_config;
